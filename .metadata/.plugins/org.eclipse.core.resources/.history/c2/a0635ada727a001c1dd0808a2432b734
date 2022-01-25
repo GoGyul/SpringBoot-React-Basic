@@ -1,0 +1,13 @@
+package com.study.book.domain;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class Book {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)// 해당 데이터베이스 번호증가 전략을 따라가겠
+	private Long id;
+	
+}

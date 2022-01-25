@@ -1,0 +1,18 @@
+package com.study.book.service;
+
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import com.study.book.domain.BookRepository;
+
+// 단위테스트 (Service와 관련된 애들만 메모리에 띄우면됨.)
+
+@ExtendWith(MockitoExtension.class)
+public class BookServiceUnitTest {
+
+	private BookService bookService;
+	
+	private BookRepository bookRepository;
+	
+}

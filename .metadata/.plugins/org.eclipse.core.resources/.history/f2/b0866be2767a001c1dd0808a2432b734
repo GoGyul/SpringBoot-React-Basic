@@ -1,0 +1,16 @@
+package com.study.book.service;
+
+import org.springframework.stereotype.Service;
+
+import com.study.book.domain.BookRepository;
+
+//	기능을 정의할수 있고, 트랙잭션을 관리할수있음
+
+@Service
+public class BookService {
+
+	//함수 => 송금() -> 레파지토리에 여러개의 함수를 실행 -> commit or rollback
+	
+	private final BookRepository bookRepository;
+	
+}

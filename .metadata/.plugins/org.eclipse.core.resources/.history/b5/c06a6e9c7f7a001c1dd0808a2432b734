@@ -1,0 +1,5 @@
+package com.study.book.web;
+
+public class BookControllerIntegreTest {
+
+}

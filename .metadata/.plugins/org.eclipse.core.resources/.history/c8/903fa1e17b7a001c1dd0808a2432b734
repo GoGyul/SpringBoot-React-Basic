@@ -1,0 +1,39 @@
+package com.study.book.web;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.study.book.domain.Book;
+import com.study.book.service.BookService;
+
+@RestController
+public class BookController {
+
+	private final BookService bookService;
+	
+	@Autowired
+	public BookController(BookService bookService) {
+		this.bookService = bookService;
+	}
+	
+	@PostMapping("/book")
+	public ResponseEntity<?> save(@RequestBody Book book){
+		return new ResponseEntity<>(bookService.저장하기(book),HttpStatus.OK);
+	}
+	
+	// 리스폰스 엔티티 리턴할때 제너릭줘서 편하게하기
+	@GetMapping("/book")
+	public ResponseEntity<?> findByAll(){
+		
+		return new ResponseEntity<>(bookService.모두가져오기(),HttpStatus.OK);
+		
+	}
+	
+	
+	
+}

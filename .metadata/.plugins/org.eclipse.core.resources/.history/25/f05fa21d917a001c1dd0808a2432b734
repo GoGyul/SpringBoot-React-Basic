@@ -1,0 +1,34 @@
+package com.study.book.web;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
+
+import com.study.book.service.BookService;
+
+import lombok.extern.slf4j.Slf4j;
+
+// 단위 테스트 (Controller 관련 로직만 띄우기)
+// filter, ControllerAdvice
+
+// 단위 테스트에 필요한 어노테이션
+@WebMvcTest
+@Slf4j
+public class BookControllerUnitTest {
+
+	// 주소 호출을 해서 테스트를 도와줌
+	@Autowired
+	private MockMvc mockMvc;
+	
+	@MockBean // Ioc 환경에 등록됨. 가짜 서비스를 올린것. Mock 환경에.
+	private BookService bookService;
+	
+	@Test
+	public void save_테스트() {
+		log.info("save_테스트() 시작 ===================");
+		bookService.저장하기(new Book(null,"제목","cos"));
+	}
+	
+}

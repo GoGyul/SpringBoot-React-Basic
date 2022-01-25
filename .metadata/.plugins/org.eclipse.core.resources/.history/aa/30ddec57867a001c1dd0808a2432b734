@@ -1,0 +1,17 @@
+package com.study.book.web;
+
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+
+/*
+ * 	통합 테스트 (모든 Bean들을 똑같이 Ioc에 올리고 테스트 하는것)
+ *  WebEnvironment.MOCK = 실제 톰캣을 올리는게 아니라 다른 톰켓으로 테스트
+ *  WebEnvironment.RANDOM_POR = 실제 톰켓으로 테스트
+ */
+
+
+//통합 테스트에 필요한 어노테이션
+@SpringBootTest(webEnvironment = WebEnvironment.MOCK) 
+public class BookControllerIntegreTest {
+
+}

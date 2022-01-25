@@ -1,0 +1,46 @@
+package com.study.book.web;
+
+import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.web.servlet.MockMvc;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.study.book.domain.Book;
+import com.study.book.service.BookService;
+
+import lombok.extern.slf4j.Slf4j;
+
+// 단위 테스트 (Controller 관련 로직만 띄우기)
+// filter, ControllerAdvice
+
+// 단위 테스트에 필요한 어노테이션
+@WebMvcTest
+@Slf4j
+public class BookControllerUnitTest {
+
+	// 주소 호출을 해서 테스트를 도와줌
+	@Autowired
+	private MockMvc mockMvc;
+	
+	@MockBean // Ioc 환경에 등록됨. 가짜 서비스를 올린것. Mock 환경에.
+	private BookService bookService;
+	
+	// BDDMockito 패턴
+	@Test
+	public void save_테스트() throws JsonProcessingException {
+		// given (테스트를 하기위한 준비.)
+		// save 함수 호출할때 던져줘야 되는것이 json 데이터 이기 때문에 Book 객체를 json으로 미리 만들어둠
+		Book book = new Book(null,"스프링따라하기","코스");
+		String content = new ObjectMapper().writeValueAsString(book);
+		log.info(content);
+		
+		// when
+		when(bookService.저장하기(book));
+	}
+	
+}
